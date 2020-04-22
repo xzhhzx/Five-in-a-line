@@ -7,7 +7,7 @@ let computerScore = 0;
 // const scoreBoard_div = document.querySelector('.score-board');
 // const result_div = document.querySelector('.result');
 
-var N = 5;
+var N = 15;
 
 /* Current state of chess board */
 game_state = Array(N).fill(0).map(x => Array(N).fill(0));
@@ -290,6 +290,7 @@ function createGameBoard() {        // Dynamically create a table, see: https://
   for(var j = 0; j < N; j++) {
       // creates a <tr> element
       mycurrent_row = document.createElement("tr");
+      mycurrent_row.setAttribute("class", "row")
 
       for(var i = 0; i < N; i++) {
           // creates a <td> element

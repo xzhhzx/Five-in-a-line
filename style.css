@@ -42,30 +42,59 @@ table.center {
 }
 
 #gameboard {
-	margin: 40px; 
-	width: 50%;
+	width: 80%;
 	margin-top: 5%;
+	margin-bottom: 5%;
     margin-left: auto; 
 	margin-right: auto;
-	
-	
 }
 
+
 #mtable{
-	/* background-color: #c4c56c; */
-	margin: 0;
+	margin: auto;
+	/* margin-left: 20%;
+	margin-right: 20%; */
+	/* border-spacing: 0.0rem; */	/*Same as below*/
+	border-collapse: collapse;
+}
+
+
+.tbody{
+	background-color: #c4c56c;
+	align-self: center;
+}
+
+.row{
+	/* display: inline-block; */
+	display: block;
+	/* padding: 10px; */
+	/* margin: 10px; */
+	/* border: #4dcc7d; */
+	height: 64px;
+	/* width: 320px; */
 }
 
 .cell{
 	/* background-image: url("./image/grid_chess_shadow.png"); */
 	/* background-color: aqua; */
 	/* display: inline-block; */
+	/* display: block; */
+	/* display: inline; */
 	/* border: 3px solid #fff; */
 	/* border-radius: 50%; */
-	/* padding: 10px;
-	margin: auto 10px;
-	transition: all 0.3s ease; */
+	/* padding: 10px; */
+	/* margin: auto 10px; */
+	/* transition: all 0.3s ease; */
+
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+	/* height: 64px;
+	width: 64px; */
+
 }
+
+
 
 
 #user-label {
