@@ -7,7 +7,7 @@ let computerScore = 0;
 // const scoreBoard_div = document.querySelector('.score-board');
 // const result_div = document.querySelector('.result');
 
-var N = 15;
+var N = 12;
 
 /* Current state of chess board */
 game_state = Array(N).fill(0).map(x => Array(N).fill(0));
@@ -109,8 +109,7 @@ function showChessShadow(cell) {
 
   // console.log();
   console.log('inside' + cell.id);
-  cell.innerHTML = "<img src=\"./image/grid_chess_shadow.png\">";
-  
+  cell.innerHTML = "<img src=\"./image/grid_chess_shadow.png\">"; 
 }
 
 function showChessShadow_img(cell_img) {
@@ -120,7 +119,10 @@ function showChessShadow_img(cell_img) {
   let y = cell_img.id.split('_')[1];
   
   if(game_state[x][y] === 0){
-    cell_img.src = "./image/grid_chess_shadow.png";
+    if(turn === 'A')
+      cell_img.src = "./image/grid_chess_black_TP.png";
+    else
+      cell_img.src = "./image/grid_chess_white_TP.png";
   }
 }
 
@@ -187,10 +189,6 @@ function putChess(cell_img) {
   let y = parseInt(cell_img.id.split('_')[1]);
 
   if(turn === 'A'){
-    if(isWinning(1, x, y)){
-      window.alert("Player A wins!");
-    }
-
     if(game_state[x][y] === 0){
       // console.log('Player A confirm chess position: ' + cell_img.id);
       game_state[x][y] = 1;     // Modify underlying data structure
@@ -199,12 +197,13 @@ function putChess(cell_img) {
     } else {
       window.alert("Don't XIA put!");
     }
+
+    if(isWinning(1, x, y)){
+      window.alert("Player A wins!");
+      restart();
+    }
   }
   else{
-    if(isWinning(2, x, y)){
-      window.alert("Player B wins!");
-    }
-
     if(game_state[x][y] === 0){
       game_state[x][y] = 2;
       // console.log('Player B confirm chess position: ' + cell_img.id);
@@ -213,6 +212,12 @@ function putChess(cell_img) {
     } else {
       window.alert("Don't XIA put!");
     }
+
+    if(isWinning(2, x, y)){
+      window.alert("Player B wins!");
+      restart();
+    }
+
   }
 }
 
@@ -321,11 +326,16 @@ function createGameBoard() {        // Dynamically create a table, see: https://
   // appends <table> into <body>
   gameboard.appendChild(mytable);
   // sets the border attribute of mytable to 2;
-  // mytable.setAttribute("border","2");
+  // mytable.setAttribute("border","2");  
+}
 
 
-  test.appendChild(document.createElement("div"));
-  
+function restart(){
+  document.querySelectorAll(".cell_img").forEach( (e) => {
+    e.src = "./image/grid.png";
+  });
+
+  game_state = Array(N).fill(0).map(x => Array(N).fill(0));
 }
 
 
